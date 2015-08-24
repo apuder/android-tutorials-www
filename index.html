@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html>
+  <head>
+    <title>Android Tutorials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> 
+    <script>
+      var userAgent = navigator.userAgent.toLowerCase();
+      var isMobile = userAgent.indexOf('android') > -1 ||
+                     userAgent.indexOf('ipad') > -1;
+    </script>
+    <script type="text/javascript" src="js/iscroll-lite.js"></script>
+    <script type="text/javascript" src="js/shCore.js"></script>
+    <script type="text/javascript" src="js/shBrushJava.js"></script>
+    <script type="text/javascript" src="js/shBrushXml.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.11.1.custom.min.js"></script>
+    <link href="css/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="css/shCoreEclipse.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="css/smoothness/jquery-ui-1.11.1.custom.min.css" rel="stylesheet" />	
+    
+	<style>
+	  body {
+	    font-family:Arial;
+	    background-color:#444;
+		border:0;
+		margin:0;
+		overflow:hidden;
+	  }
+	  
+	  a {
+	    color:white;
+		text-decoration:none;
+	  }
+	  
+	  #layout {
+	    width:100%;
+		height:100%;
+	  }
+
+	  #content table {
+	    width:100%;
+		height:100%;
+	  }
+
+      #slides,#code {
+	    width:50%;
+	  }
+	  
+	  #slide {
+	    width:100%;
+	  }
+	  
+	  #code iframe{
+		width:100%;
+	    height:100%;
+	  }
+	  
+	  #title {
+	    font-family:'Arial';
+		font-size:23px;
+	  }
+
+	  #navigation {
+	    vertical-align:top;
+		background-color:#ddd;
+		width:190px;
+		text-align:center;
+	  }
+	  
+	  #tutorialList {
+	    overflow:auto;
+	  }
+	  
+	  .platformTitle {
+	    font-family:'Arial';
+	    font-size:22px;
+	    text-align:center;
+	    font-weight:bold;
+	    padding:5px;
+	  }
+	  
+	  .ios .platformTitle {
+		text-shadow: 0 0 0.2em #559;
+		-webkit-text-shadow: 0 0 0.2em #559;
+		-moz-text-shadow: 0 0 0.2em #559;
+	  }
+
+	  .android .platformTitle {
+		text-shadow: 0 0 0.2em #595;
+		-webkit-text-shadow: 0 0 0.2em #595;
+		-moz-text-shadow: 0 0 0.2em #595;
+	  }
+
+	  .tutorialTitle {
+	    font-family:'Arial';
+		padding:5px;
+		font-size:12px;
+		text-align:left;
+	  }
+	  
+	  .selectedEntry .tutorialTitle {
+	    color:red;
+	    font-weight:bold;
+	  }
+
+	  .tutorialEntry {
+		background:white;
+		margin:8px;
+		border-radius:10px 0px;
+		box-shadow: 0 0 5px 2px #999;
+		-webkit-box-shadow: 0 0 5px 2px #999;
+		transition: 0.2s linear;
+		-webkit-transition: 0.2s linear;
+		-moz-transition: 0.2s linear;
+	  }
+	  
+	  .tutorialEntry * {
+	    cursor:pointer;
+	  }
+	  
+	  .tutorialEntryHover:hover {
+	    box-shadow: 0 0 6px 2px #822;
+	    -webkit-box-shadow: 0 0 6px 2px #822;
+	    -moz-moz-shadow: 0 0 6px 2px #822;
+		transform: rotate(-5deg);
+		-webkit-transform: rotate(-5deg);
+		-moz-transform: rotate(-5deg);
+	  }
+	  
+	  .tutorialEntry .description {
+		color:white;
+		border-radius:10px 0px;
+		font-size:11px;
+		padding:5px;
+		text-align:left;
+	  }
+	  
+	  .ios .tutorialEntry .description {
+	    background:#115;
+	  }
+
+	  .android .tutorialEntry .description {
+	    background:#151;
+	  }
+
+	  .syntaxhighlighter {
+	    font-size:12px !important;
+	  }
+	  .ui-tabs .ui-tabs-nav li {
+	    font-size:12px;
+        font-weight:normal !important;
+	  }
+	  
+	  .ui-tabs .ui-tabs-panel {
+	    padding:0 !important;
+	  }
+	</style>
+  </head>
+  <body>
+    <script>
+	  var codeFiles = {};
+	</script>
+    <table id="layout" cellspacing="0">
+	  <tr id="content">
+	    <td>
+		  <table cellspacing="0">
+		    <tr>
+			  <td id="navigation">
+				<table width="100%" height="100%">
+				  <tr style="height:10px;text-align:center;">
+				    <td id="logoWrapper">
+        			    <img src="img/logo.png" onclick="javascript:switchToIntro();" style="padding:20px; cursor:pointer;"/>
+		        	    <a href="tutorial-sources.tar.gz"><img src="img/download.png"/></a>
+					</td>
+				  </tr>
+				  <tr>
+				    <td style="vertical-align:top;">
+					  <div id="tutorialList">
+					    <div>
+					      <div class="android"><div class="platformTitle">Android</div><div id="e49e4a6f9f68ff3d1e5b66e3d99f226" class="tutorialEntry" onclick="javascript:switchToTutorial('e49e4a6f9f68ff3d1e5b66e3d99f226');"><div class="tutorialTitle">1. HelloWorld (prog)</div><div class="description">Simple HelloWorld application for Android. Implementation without any
+		layout resources.</div></div><div id="8b278f5947e4f01373157135fd35a6e" class="tutorialEntry" onclick="javascript:switchToTutorial('8b278f5947e4f01373157135fd35a6e');"><div class="tutorialTitle">2. HelloWorld (decl)</div><div class="description">Simple HelloWorld application for Android. Implementation using a simple
+		layout resource to declare the content view.</div></div><div id="2db0b6f3f8a86831b9deff5447f579e5" class="tutorialEntry" onclick="javascript:switchToTutorial('2db0b6f3f8a86831b9deff5447f579e5');"><div class="tutorialTitle">3. Layout (linear)</div><div class="description">A simple Android application demonstrating layout capabilities using
+		a LinearLayout.</div></div><div id="cbc2a13f2ad5784a4d3cbe93754c1fd6" class="tutorialEntry" onclick="javascript:switchToTutorial('cbc2a13f2ad5784a4d3cbe93754c1fd6');"><div class="tutorialTitle">4. Layout (relative)</div><div class="description">A simple Android application demonstrating layout capabilities using
+		a RelativeLayout.</div></div><div id="e6b32a6dad226e62040964db6144c5c" class="tutorialEntry" onclick="javascript:switchToTutorial('e6b32a6dad226e62040964db6144c5c');"><div class="tutorialTitle">5. SayHello (prog)</div><div class="description">A simple Android application demonstrating simple event handling with
+		a button as well as accessing UI widgets. The application is implemented
+		without declaring layout resources.</div></div><div id="ea2c30d47d2779dcdee622b2bc31d5e" class="tutorialEntry" onclick="javascript:switchToTutorial('ea2c30d47d2779dcdee622b2bc31d5e');"><div class="tutorialTitle">6. SayHello (decl)</div><div class="description">A simple Android application demonstrating simple event handling with
+		a button as well as accessing UI widgets. The application is implemented
+		declaring a layout resources which also declares the Button's event handler.</div></div><div id="cf4dd38f0deff454b6348ecac28a4" class="tutorialEntry" onclick="javascript:switchToTutorial('cf4dd38f0deff454b6348ecac28a4');"><div class="tutorialTitle">7. Widgets</div><div class="description">Application to demonstrate the User Interface widgets in Android.</div></div><div id="fb66aa1f45e4cbedf68db1b57a7293b0" class="tutorialEntry" onclick="javascript:switchToTutorial('fb66aa1f45e4cbedf68db1b57a7293b0');"><div class="tutorialTitle">8. Activities (explicit)</div><div class="description">A simple Android application demonstrating the explicit switching between activities
+              with the called activity providing a result to the calling activity. Additionally
+              the application facilitates a BackKey handler.</div></div><div id="32f15b79ac52d61ccdbc6cc2ade3a74f" class="tutorialEntry" onclick="javascript:switchToTutorial('32f15b79ac52d61ccdbc6cc2ade3a74f');"><div class="tutorialTitle">9. Activities (implicit)</div><div class="description">Two Android applications demonstrating the implicit launching of activities. There are three activities
+              that respond to the same action (Yellow, Red, and Green) prompting Android to show an activity chooser.</div></div><div id="52f4fc70274abe1e81bfb3bf958f3e" class="tutorialEntry" onclick="javascript:switchToTutorial('52f4fc70274abe1e81bfb3bf958f3e');"><div class="tutorialTitle">10. Fragments</div><div class="description">Two fragments that are shown side-by-side in landscape mode and in
+              two separate activities in portrait mode.</div></div><div id="4b738547b99ad13024b2802a8d67c9f9" class="tutorialEntry" onclick="javascript:switchToTutorial('4b738547b99ad13024b2802a8d67c9f9');"><div class="tutorialTitle">11. List</div><div class="description">Use a RecyclerView to display a list of items where each item is rendered
+              in a CardView. Also shows usage of an Floating Action Button.</div></div><div id="9ccd39cda5ea9e457675cb6bb4b6fd3" class="tutorialEntry" onclick="javascript:switchToTutorial('9ccd39cda5ea9e457675cb6bb4b6fd3');"><div class="tutorialTitle">12. Navigation Drawer</div><div class="description">Application to demonstrate the usage of the Navigation Drawer.</div></div><div id="3e684c4268f3fed6c7211469dc95199" class="tutorialEntry" onclick="javascript:switchToTutorial('3e684c4268f3fed6c7211469dc95199');"><div class="tutorialTitle">13. TabLayout</div><div class="description">Application to demonstrate the usage of the TabLayout from the Design Support Library.</div></div><div id="116629cdb9c47331435b74d459f7" class="tutorialEntry" onclick="javascript:switchToTutorial('116629cdb9c47331435b74d459f7');"><div class="tutorialTitle">14. Alerts</div><div class="description">Shows the use of toasts, snackbars and alert dialogs.</div></div><div id="c8efb571ed115043fa91a19d12eb37ec" class="tutorialEntry" onclick="javascript:switchToTutorial('c8efb571ed115043fa91a19d12eb37ec');"><div class="tutorialTitle">15. MultiTouch</div><div class="description">A simple multi-touch example. Fingers placed on the screen
+		are tracked while being moved.</div></div><div id="55c8f1aec21e89b8fbff973f7021bd" class="tutorialEntry" onclick="javascript:switchToTutorial('55c8f1aec21e89b8fbff973f7021bd');"><div class="tutorialTitle">16. Drawing</div><div class="description">A simple Android application demonstrating drawing capabilities using
+		the Canvas and Paint classes.</div></div><div id="c3309f89885acb39b5a168e3c06616d" class="tutorialEntry" onclick="javascript:switchToTutorial('c3309f89885acb39b5a168e3c06616d');"><div class="tutorialTitle">17. Handler</div><div class="description">Shows the use of a Handler to post messages to the UI thread.</div></div><div id="f53185986b39e4d055c5eb9f8b470b3" class="tutorialEntry" onclick="javascript:switchToTutorial('f53185986b39e4d055c5eb9f8b470b3');"><div class="tutorialTitle">18. AsyncTask</div><div class="description">Shows usage of AsyncTask to simplify background processing.</div></div><div id="742639f66396681308b7af41c868af6" class="tutorialEntry" onclick="javascript:switchToTutorial('742639f66396681308b7af41c868af6');"><div class="tutorialTitle">19. Notification</div><div class="description">Shows usage of normal view notification.</div></div><div id="45d7a3fb10bcfd9e85323ed3aefdb6c" class="tutorialEntry" onclick="javascript:switchToTutorial('45d7a3fb10bcfd9e85323ed3aefdb6c');"><div class="tutorialTitle">20. Service (started)</div><div class="description">Demonstrates the use of a started service.</div></div><div id="3aa1e5592310c4a141d6829b2e84d4b" class="tutorialEntry" onclick="javascript:switchToTutorial('3aa1e5592310c4a141d6829b2e84d4b');"><div class="tutorialTitle">21. Service (bound)</div><div class="description">Demonstrates the use of a bound service.</div></div><div id="2369de206d4fc4e57a5abd1a3974e64" class="tutorialEntry" onclick="javascript:switchToTutorial('2369de206d4fc4e57a5abd1a3974e64');"><div class="tutorialTitle">22. Storage</div><div class="description">Show various ways of making data persistent.</div></div><div id="cb18ad3c706bb4fca84a7c3063b74792" class="tutorialEntry" onclick="javascript:switchToTutorial('cb18ad3c706bb4fca84a7c3063b74792');"><div class="tutorialTitle">23. ContentProvider</div><div class="description">Demonstrates the implementation of a ContentProvider that can be accessed from
+              other Android applications.</div></div><div id="ff4c6124379a552d31f9e1162a324f" class="tutorialEntry" onclick="javascript:switchToTutorial('ff4c6124379a552d31f9e1162a324f');"><div class="tutorialTitle">24. BroadcastReceiver</div><div class="description">An application to demonstrate BroadcastReceiver in Android.</div></div><div id="a3e3116545d1c9316169f2e4df22322c" class="tutorialEntry" onclick="javascript:switchToTutorial('a3e3116545d1c9316169f2e4df22322c');"><div class="tutorialTitle">25. Settings</div><div class="description">Using settings under Android.</div></div><div id="581eed62483538cfa35b998298f5ea3f" class="tutorialEntry" onclick="javascript:switchToTutorial('581eed62483538cfa35b998298f5ea3f');"><div class="tutorialTitle">26. Map</div><div class="description">A simple Android application demonstrating using MapActivity from the Google Android API.</div></div><div id="cdcfc98c547a9aa9b9668425c1ea102c" class="tutorialEntry" onclick="javascript:switchToTutorial('cdcfc98c547a9aa9b9668425c1ea102c');"><div class="tutorialTitle">27. Accelerometer</div><div class="description">A simple Android application demonstrating how to get the accelerometer
+		sensor readings.</div></div><div id="f008c10cf24a46cda651eb3bc9a8c1" class="tutorialEntry" onclick="javascript:switchToTutorial('f008c10cf24a46cda651eb3bc9a8c1');"><div class="tutorialTitle">28. Gyroscope</div><div class="description">Simple Android application to demonstrate use of Gyroscope sensor in Android.</div></div><div id="8619a48e7cacdacede43c53ddbac874" class="tutorialEntry" onclick="javascript:switchToTutorial('8619a48e7cacdacede43c53ddbac874');"><div class="tutorialTitle">29. GPS</div><div class="description">A simple Android application displaying the current longitude and latitude.</div></div><div id="1549335147a985a9bb291351eb84e94f" class="tutorialEntry" onclick="javascript:switchToTutorial('1549335147a985a9bb291351eb84e94f');"><div class="tutorialTitle">30. Camera</div><div class="description">Simple Android application to demonstrate use of camera in Android.</div></div><div id="64696a82a78ef8cf533e0e112684ae" class="tutorialEntry" onclick="javascript:switchToTutorial('64696a82a78ef8cf533e0e112684ae');"><div class="tutorialTitle">31. Camera 2</div><div class="description">Simple Android application to demonstrate use of Camera 2 API in Android.</div></div><div id="409cfd664de51709f35854bbbdae" class="tutorialEntry" onclick="javascript:switchToTutorial('409cfd664de51709f35854bbbdae');"><div class="tutorialTitle">32. NFC Reader</div><div class="description">Read NDEF-formatted NFC tags.</div></div><div id="a7b5849d59c20744be031707e90a31a" class="tutorialEntry" onclick="javascript:switchToTutorial('a7b5849d59c20744be031707e90a31a');"><div class="tutorialTitle">33. Sound</div><div class="description">Simple Android aplication to demonstrate use of MediaPlayer for audio playback.</div></div><div id="d9ec43ef89b53d5c3e94bdf28164f9f" class="tutorialEntry" onclick="javascript:switchToTutorial('d9ec43ef89b53d5c3e94bdf28164f9f');"><div class="tutorialTitle">34. Animation</div><div class="description">Uses property animation to bounce a ball across the screen.</div></div><div id="dbf383e716e7fc41565f617e79162493" class="tutorialEntry" onclick="javascript:switchToTutorial('dbf383e716e7fc41565f617e79162493');"><div class="tutorialTitle">35. Immersive</div><div class="description">Demonstrates immersive mode where an application can take over
+		the whole screen.</div></div><div id="5abd56f4dccbbc885f0e066ab9361b9" class="tutorialEntry" onclick="javascript:switchToTutorial('5abd56f4dccbbc885f0e066ab9361b9');"><div class="tutorialTitle">36. Internationalization</div><div class="description">Simple HelloWorld application for Android. Implementation using a simple
+		layout resource to declare the content view being showed. Application name
+		and the greeting text are defined by String resources to support internationalization.</div></div><div id="557b12684f341cc24854bd737a58a5e2" class="tutorialEntry" onclick="javascript:switchToTutorial('557b12684f341cc24854bd737a58a5e2');"><div class="tutorialTitle">37. Espresso UI Test</div><div class="description">UI testing tutorial for SayHello declarative version using Espresso.</div></div></div>
+					    </div>
+					  </div>
+					</td>
+				  </tr>
+				</table>
+			  </td>
+			  <td style="vertical-align:top;">
+
+<div id="tabs">
+	<ul>
+	  <li><a href="#slide-tab">Slides</a></li>
+	  <li><a href="#source-tab">Source Code</a></li>
+	</ul>
+	<div id="slide-tab">
+      <iframe id="slide" frameborder="0" allowfullscreen webkitallowfullscreen src="viewer/viewer.html?file=/doc/slides.pdf"></iframe>
+    </div>
+	<div id="source-tab">
+	  <div class="file-tabs">
+	  <ul id="fileTabs">
+		<li><a href="code1.html">Code 1</a></li>
+		<li><a href="#file2">File 2</a></li>
+	  </ul>
+      </div> <!-- file tabs -->
+    </div> <!-- source-tab  -->
+</div> <!-- tabs -->
+
+		  </td></tr>
+		  </table>
+	    </td>
+	  </tr>
+	</table>
+<script>
+codeFiles['e49e4a6f9f68ff3d1e5b66e3d99f226'] = [{'loc':'code/e49e4a6f9f68ff3d1e5b66e3d99f226-app-src-main-java-org-androidtutorials-helloworld-prog-HelloWorldActivity.java.html', 'label':'HelloWorldActivity.java'},{'loc':'code/e49e4a6f9f68ff3d1e5b66e3d99f226-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['8b278f5947e4f01373157135fd35a6e'] = [{'loc':'code/8b278f5947e4f01373157135fd35a6e-app-src-main-java-org-androidtutorials-helloworld-decl-HelloWorldActivity.java.html', 'label':'HelloWorldActivity.java'},{'loc':'code/8b278f5947e4f01373157135fd35a6e-app-build-generated-source-r-debug-org-androidtutorials-helloworld-decl-R.java.html', 'label':'R.java'},{'loc':'code/8b278f5947e4f01373157135fd35a6e-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{}];
+</script>
+<script>
+codeFiles['2db0b6f3f8a86831b9deff5447f579e5'] = [{'loc':'code/2db0b6f3f8a86831b9deff5447f579e5-app-src-main-java-org-androidtutorials-layout-linear-LayoutActivity.java.html', 'label':'LayoutActivity.java'},{'loc':'code/2db0b6f3f8a86831b9deff5447f579e5-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{'loc':'code/2db0b6f3f8a86831b9deff5447f579e5-app-src-main-res-layout-land-main.xml.html', 'label':'app/src/main/res/layout-land/main.xml'},{}];
+</script>
+<script>
+codeFiles['cbc2a13f2ad5784a4d3cbe93754c1fd6'] = [{'loc':'code/cbc2a13f2ad5784a4d3cbe93754c1fd6-app-src-main-java-org-androidtutorials-layout-relative-LayoutActivity.java.html', 'label':'LayoutActivity.java'},{'loc':'code/cbc2a13f2ad5784a4d3cbe93754c1fd6-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{}];
+</script>
+<script>
+codeFiles['e6b32a6dad226e62040964db6144c5c'] = [{'loc':'code/e6b32a6dad226e62040964db6144c5c-app-src-main-java-org-androidtutorials-sayhello-prog-SayHelloActivity.java.html', 'label':'SayHelloActivity.java'},{}];
+</script>
+<script>
+codeFiles['ea2c30d47d2779dcdee622b2bc31d5e'] = [{'loc':'code/ea2c30d47d2779dcdee622b2bc31d5e-app-src-main-java-org-androidtutorials-sayhello-decl-SayHelloActivity.java.html', 'label':'SayHelloActivity.java'},{'loc':'code/ea2c30d47d2779dcdee622b2bc31d5e-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{}];
+</script>
+<script>
+codeFiles['cf4dd38f0deff454b6348ecac28a4'] = [{'loc':'code/cf4dd38f0deff454b6348ecac28a4-app-src-main-java-org-androidtutorials-widgets-WidgetActivity.java.html', 'label':'WidgetActivity.java'},{'loc':'code/cf4dd38f0deff454b6348ecac28a4-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{'loc':'code/cf4dd38f0deff454b6348ecac28a4-app-src-main-res-values-strings.xml.html', 'label':'app/src/main/res/values/strings.xml'},{}];
+</script>
+<script>
+codeFiles['fb66aa1f45e4cbedf68db1b57a7293b0'] = [{'loc':'code/fb66aa1f45e4cbedf68db1b57a7293b0-app-src-main-java-org-androidtutorials-activity-explicit-BlueActivity.java.html', 'label':'BlueActivity.java'},{'loc':'code/fb66aa1f45e4cbedf68db1b57a7293b0-app-src-main-java-org-androidtutorials-activity-explicit-YellowActivity.java.html', 'label':'YellowActivity.java'},{'loc':'code/fb66aa1f45e4cbedf68db1b57a7293b0-app-src-main-java-org-androidtutorials-activity-explicit-LoggingActivity.java.html', 'label':'LoggingActivity.java'},{}];
+</script>
+<script>
+codeFiles['32f15b79ac52d61ccdbc6cc2ade3a74f'] = [{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicit-app-src-main-java-org-androidtutorials-activity-implicit-BlueActivity.java.html', 'label':'BlueActivity.java'},{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicit-app-src-main-java-org-androidtutorials-activity-implicit-RedActivity.java.html', 'label':'RedActivity.java'},{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicit-app-src-main-java-org-androidtutorials-activity-implicit-YellowActivity.java.html', 'label':'YellowActivity.java'},{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicit-app-src-main-AndroidManifest.xml.html', 'label':'activityswitchimplicit/app/src/main/AndroidManifest.xml'},{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicitgreen-app-src-main-java-org-androidtutorials-activity-implicit-green-GreenActivity.java.html', 'label':'GreenActivity.java'},{'loc':'code/32f15b79ac52d61ccdbc6cc2ade3a74f-activityswitchimplicitgreen-app-src-main-AndroidManifest.xml.html', 'label':'activityswitchimplicitgreen/app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['52f4fc70274abe1e81bfb3bf958f3e'] = [{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-java-org-androidtutorials-activity-fragment-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-res-layout-activity_main.xml.html', 'label':'app/src/main/res/layout/activity_main.xml'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-res-layout-land-activity_main.xml.html', 'label':'app/src/main/res/layout-land/activity_main.xml'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-java-org-androidtutorials-activity-fragment-FruitListFragment.java.html', 'label':'FruitListFragment.java'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-java-org-androidtutorials-activity-fragment-DetailFragment.java.html', 'label':'DetailFragment.java'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-java-org-androidtutorials-activity-fragment-DetailActivity.java.html', 'label':'DetailActivity.java'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-res-layout-activity_detail.xml.html', 'label':'app/src/main/res/layout/activity_detail.xml'},{'loc':'code/52f4fc70274abe1e81bfb3bf958f3e-app-src-main-res-layout-fragment_detail.xml.html', 'label':'app/src/main/res/layout/fragment_detail.xml'},{}];
+</script>
+<script>
+codeFiles['4b738547b99ad13024b2802a8d67c9f9'] = [{'loc':'code/4b738547b99ad13024b2802a8d67c9f9-app-src-main-java-org-androidtutorials-navigation-list-ItemListActivity.java.html', 'label':'ItemListActivity.java'},{'loc':'code/4b738547b99ad13024b2802a8d67c9f9-app-src-main-java-org-androidtutorials-navigation-list-ItemAdapter.java.html', 'label':'ItemAdapter.java'},{'loc':'code/4b738547b99ad13024b2802a8d67c9f9-app-src-main-res-layout-list_item.xml.html', 'label':'app/src/main/res/layout/list_item.xml'},{}];
+</script>
+<script>
+codeFiles['9ccd39cda5ea9e457675cb6bb4b6fd3'] = [{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-java-org-androidtutorials-design-navigationdrawer-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-res-layout-activity_main.xml.html', 'label':'app/src/main/res/layout/activity_main.xml'},{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-res-layout-navbar_header.xml.html', 'label':'app/src/main/res/layout/navbar_header.xml'},{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-res-layout-toolbar.xml.html', 'label':'app/src/main/res/layout/toolbar.xml'},{'loc':'code/9ccd39cda5ea9e457675cb6bb4b6fd3-app-src-main-res-menu-menu_drawer.xml.html', 'label':'app/src/main/res/menu/menu_drawer.xml'},{}];
+</script>
+<script>
+codeFiles['3e684c4268f3fed6c7211469dc95199'] = [{'loc':'code/3e684c4268f3fed6c7211469dc95199-app-src-main-java-org-androidtutorials-navigation-tablayout-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/3e684c4268f3fed6c7211469dc95199-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{'loc':'code/3e684c4268f3fed6c7211469dc95199-app-src-main-res-layout-activity_main.xml.html', 'label':'app/src/main/res/layout/activity_main.xml'},{}];
+</script>
+<script>
+codeFiles['116629cdb9c47331435b74d459f7'] = [{'loc':'code/116629cdb9c47331435b74d459f7-app-src-main-java-org-androidtutorials-alert-AlertActivity.java.html', 'label':'AlertActivity.java'},{}];
+</script>
+<script>
+codeFiles['c8efb571ed115043fa91a19d12eb37ec'] = [{'loc':'code/c8efb571ed115043fa91a19d12eb37ec-app-src-main-java-org-androidtutorials-touch-MultiTouchActivity.java.html', 'label':'MultiTouchActivity.java'},{}];
+</script>
+<script>
+codeFiles['55c8f1aec21e89b8fbff973f7021bd'] = [{'loc':'code/55c8f1aec21e89b8fbff973f7021bd-app-src-main-java-org-androidtutorials-drawing-DrawingActivity.java.html', 'label':'DrawingActivity.java'},{}];
+</script>
+<script>
+codeFiles['c3309f89885acb39b5a168e3c06616d'] = [{'loc':'code/c3309f89885acb39b5a168e3c06616d-app-src-main-java-org-androidtutorials-handler-FibonacciActivity.java.html', 'label':'FibonacciActivity.java'},{}];
+</script>
+<script>
+codeFiles['f53185986b39e4d055c5eb9f8b470b3'] = [{'loc':'code/f53185986b39e4d055c5eb9f8b470b3-app-src-main-java-org-androidtutorials-asynctask-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/f53185986b39e4d055c5eb9f8b470b3-app-src-main-res-layout-activity_main.xml.html', 'label':'app/src/main/res/layout/activity_main.xml'},{}];
+</script>
+<script>
+codeFiles['742639f66396681308b7af41c868af6'] = [{'loc':'code/742639f66396681308b7af41c868af6-app-src-main-java-org-androidtutorials-notification-MainActivity.java.html', 'label':'MainActivity.java'},{}];
+</script>
+<script>
+codeFiles['45d7a3fb10bcfd9e85323ed3aefdb6c'] = [{'loc':'code/45d7a3fb10bcfd9e85323ed3aefdb6c-app-src-main-java-org-androidtutorials-service-started-FibonacciActivity.java.html', 'label':'FibonacciActivity.java'},{'loc':'code/45d7a3fb10bcfd9e85323ed3aefdb6c-app-src-main-java-org-androidtutorials-service-started-FibonacciService.java.html', 'label':'FibonacciService.java'},{'loc':'code/45d7a3fb10bcfd9e85323ed3aefdb6c-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['3aa1e5592310c4a141d6829b2e84d4b'] = [{'loc':'code/3aa1e5592310c4a141d6829b2e84d4b-app-src-main-java-org-androidtutorials-service-bound-FibonacciActivity.java.html', 'label':'FibonacciActivity.java'},{'loc':'code/3aa1e5592310c4a141d6829b2e84d4b-app-src-main-java-org-androidtutorials-service-bound-FibonacciResultListener.java.html', 'label':'FibonacciResultListener.java'},{'loc':'code/3aa1e5592310c4a141d6829b2e84d4b-app-src-main-java-org-androidtutorials-service-bound-FibonacciService.java.html', 'label':'FibonacciService.java'},{'loc':'code/3aa1e5592310c4a141d6829b2e84d4b-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['2369de206d4fc4e57a5abd1a3974e64'] = [{'loc':'code/2369de206d4fc4e57a5abd1a3974e64-app-src-main-java-org-androidtutorials-storage-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/2369de206d4fc4e57a5abd1a3974e64-app-src-main-java-org-androidtutorials-storage-sql-DatabaseHandler.java.html', 'label':'DatabaseHandler.java'},{'loc':'code/2369de206d4fc4e57a5abd1a3974e64-app-src-main-java-org-androidtutorials-storage-sql-Employee.java.html', 'label':'Employee.java'},{}];
+</script>
+<script>
+codeFiles['cb18ad3c706bb4fca84a7c3063b74792'] = [{'loc':'code/cb18ad3c706bb4fca84a7c3063b74792-app-src-main-java-org-androidtutorials-provider-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/cb18ad3c706bb4fca84a7c3063b74792-app-src-main-java-org-androidtutorials-provider-EmployeeProvider.java.html', 'label':'EmployeeProvider.java'},{}];
+</script>
+<script>
+codeFiles['ff4c6124379a552d31f9e1162a324f'] = [{'loc':'code/ff4c6124379a552d31f9e1162a324f-app-src-main-java-org-androidtutorials-receiver-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/ff4c6124379a552d31f9e1162a324f-app-src-main-java-org-androidtutorials-receiver-PowerConnBroadcastReceiver.java.html', 'label':'PowerConnBroadcastReceiver.java'},{'loc':'code/ff4c6124379a552d31f9e1162a324f-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['a3e3116545d1c9316169f2e4df22322c'] = [{'loc':'code/a3e3116545d1c9316169f2e4df22322c-app-src-main-java-org-androidtutorials-settings-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/a3e3116545d1c9316169f2e4df22322c-app-src-main-java-org-androidtutorials-settings-SettingsActivity.java.html', 'label':'SettingsActivity.java'},{'loc':'code/a3e3116545d1c9316169f2e4df22322c-app-src-main-java-org-androidtutorials-settings-PrefFragment.java.html', 'label':'PrefFragment.java'},{'loc':'code/a3e3116545d1c9316169f2e4df22322c-app-src-main-res-xml-settings.xml.html', 'label':'app/src/main/res/xml/settings.xml'},{}];
+</script>
+<script>
+codeFiles['581eed62483538cfa35b998298f5ea3f'] = [{'loc':'code/581eed62483538cfa35b998298f5ea3f-app-src-main-java-org-androidtutorials-map-MapActivity.java.html', 'label':'MapActivity.java'},{'loc':'code/581eed62483538cfa35b998298f5ea3f-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{'loc':'code/581eed62483538cfa35b998298f5ea3f-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['cdcfc98c547a9aa9b9668425c1ea102c'] = [{'loc':'code/cdcfc98c547a9aa9b9668425c1ea102c-app-src-main-java-org-androidtutorials-sensor-accelerometer-AccelerometerActivity.java.html', 'label':'AccelerometerActivity.java'},{}];
+</script>
+<script>
+codeFiles['f008c10cf24a46cda651eb3bc9a8c1'] = [{'loc':'code/f008c10cf24a46cda651eb3bc9a8c1-app-src-main-java-org-androidtutorials-sensor-gyroscope-GyroActivity.java.html', 'label':'GyroActivity.java'},{}];
+</script>
+<script>
+codeFiles['8619a48e7cacdacede43c53ddbac874'] = [{'loc':'code/8619a48e7cacdacede43c53ddbac874-app-src-main-java-org-androidtutorials-sensor-gps-GPSActivity.java.html', 'label':'GPSActivity.java'},{}];
+</script>
+<script>
+codeFiles['1549335147a985a9bb291351eb84e94f'] = [{'loc':'code/1549335147a985a9bb291351eb84e94f-app-src-main-java-org-androidtutorials-sensor-camera-CameraActivity.java.html', 'label':'CameraActivity.java'},{}];
+</script>
+<script>
+codeFiles['64696a82a78ef8cf533e0e112684ae'] = [{'loc':'code/64696a82a78ef8cf533e0e112684ae-app-src-main-java-org-androidtutorials-sensor-camera2-CameraActivity.java.html', 'label':'CameraActivity.java'},{'loc':'code/64696a82a78ef8cf533e0e112684ae-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{'loc':'code/64696a82a78ef8cf533e0e112684ae-app-src-main-res-layout-activity_camera.xml.html', 'label':'app/src/main/res/layout/activity_camera.xml'},{}];
+</script>
+<script>
+codeFiles['409cfd664de51709f35854bbbdae'] = [{'loc':'code/409cfd664de51709f35854bbbdae-app-src-main-java-org-androidtutorials-sensor-nfcreader-NfcTagReader.java.html', 'label':'NfcTagReader.java'},{'loc':'code/409cfd664de51709f35854bbbdae-app-src-main-AndroidManifest.xml.html', 'label':'app/src/main/AndroidManifest.xml'},{}];
+</script>
+<script>
+codeFiles['a7b5849d59c20744be031707e90a31a'] = [{'loc':'code/a7b5849d59c20744be031707e90a31a-app-src-main-java-org-androidtutorials-sound-SoundActivity.java.html', 'label':'SoundActivity.java'},{}];
+</script>
+<script>
+codeFiles['d9ec43ef89b53d5c3e94bdf28164f9f'] = [{'loc':'code/d9ec43ef89b53d5c3e94bdf28164f9f-app-src-main-java-org-androidtutorials-animation-MainActivity.java.html', 'label':'MainActivity.java'},{'loc':'code/d9ec43ef89b53d5c3e94bdf28164f9f-app-src-main-java-org-androidtutorials-animation-MyImageView.java.html', 'label':'MyImageView.java'},{'loc':'code/d9ec43ef89b53d5c3e94bdf28164f9f-app-src-main-res-layout-activity_main.xml.html', 'label':'app/src/main/res/layout/activity_main.xml'},{'loc':'code/d9ec43ef89b53d5c3e94bdf28164f9f-app-src-main-res-animator-bounce.xml.html', 'label':'app/src/main/res/animator/bounce.xml'},{}];
+</script>
+<script>
+codeFiles['dbf383e716e7fc41565f617e79162493'] = [{'loc':'code/dbf383e716e7fc41565f617e79162493-app-src-main-java-org-androidtutorials-immersive-ImmersiveActivity.java.html', 'label':'ImmersiveActivity.java'},{}];
+</script>
+<script>
+codeFiles['5abd56f4dccbbc885f0e066ab9361b9'] = [{'loc':'code/5abd56f4dccbbc885f0e066ab9361b9-app-src-main-java-org-androidtutorials-i18n-HelloWorldActivity.java.html', 'label':'HelloWorldActivity.java'},{'loc':'code/5abd56f4dccbbc885f0e066ab9361b9-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{'loc':'code/5abd56f4dccbbc885f0e066ab9361b9-app-src-main-res-values-strings.xml.html', 'label':'app/src/main/res/values/strings.xml'},{'loc':'code/5abd56f4dccbbc885f0e066ab9361b9-app-src-main-res-values-de-strings.xml.html', 'label':'app/src/main/res/values-de/strings.xml'},{}];
+</script>
+<script>
+codeFiles['557b12684f341cc24854bd737a58a5e2'] = [{'loc':'code/557b12684f341cc24854bd737a58a5e2-app-src-androidTest-java-org-androidtutorials-uitest-SayHelloActivityTest.java.html', 'label':'SayHelloActivityTest.java'},{'loc':'code/557b12684f341cc24854bd737a58a5e2-app-build.gradle.html', 'label':'app/build.gradle'},{'loc':'code/557b12684f341cc24854bd737a58a5e2-app-src-main-java-org-androidtutorials-uitest-SayHelloActivity.java.html', 'label':'SayHelloActivity.java'},{'loc':'code/557b12684f341cc24854bd737a58a5e2-app-src-main-res-layout-main.xml.html', 'label':'app/src/main/res/layout/main.xml'},{}];
+</script>
+
+<script type="text/javascript">
+  function onLayout() {
+    var windowHeight = $(window).height();
+	$('#slide').height(windowHeight - $('#slide').position().top);
+    $('#tutorialList').height(windowHeight-$('#tutorialList').position().top);
+    if (!isMobile) {
+      $('.listing').find('.syntaxhighlighter').each(function(i) {
+        $(this).height(windowHeight - $(this).offset().top);
+      });
+    }
+  }
+
+  if (!isMobile) {
+    $(window).resize(function() {
+      onLayout();
+    });
+  }
+  $(document).ready(function() {
+    SyntaxHighlighter.highlight();
+    setTimeout(onLayout, 1000);
+    onLayout();
+  });
+  onLayout();
+
+  $(function() {
+	  $('#tabs').tabs({
+		   show: function(event, ui) { onLayout(); $('.syntaxhighlighter').scrollTop(0); }
+	  });
+	  // The starting config contains a general XMLVM Intro, with no source.
+	  $('#tabs').tabs('disable', 1);
+	});
+
+  function switchToIntro() {
+      $('.selectedEntry').removeClass('selectedEntry');
+      $('#slide').attr('src', '/viewer/viewer.html?file=/doc/slides.pdf');
+	  // The starting config contains a general XMLVM Intro, with no source.
+	  $('#tabs').tabs('disable', 1);
+	  $('#tutorialList').scrollTop(0);
+  }
+
+  function switchToTutorial(id) {
+	$('.selectedEntry').removeClass('selectedEntry');
+    $('#' + id).addClass('selectedEntry');
+
+    $('#slide').attr('src', '/viewer/viewer.html?file=/slides/' + id + '-slides.pdf');
+	$('#tabs').tabs('enable', 1);
+	$('#tabs').tabs('option', 'active', 0);
+
+    $('#fileTabs').empty();
+
+    var fileList = codeFiles[id];
+    for (index in fileList) {
+      if (fileList[index].loc) {
+  	    $('#fileTabs').append($('<li><a href="' + fileList[index].loc + '">' + fileList[index].label + '</a></li>'));
+      }
+    }
+
+    $('.file-tabs').tabs({
+		   show: function(event, ui) { onLayout(); },
+		   load: function(event, ui) { SyntaxHighlighter.highlight(); onLayout(); }
+	});
+	    $('.file-tabs').tabs('refresh');
+    $('.file-tabs').tabs('option', 'active', 0);
+  }
+
+  if (isMobile) {
+	  new iScroll('tutorialList');
+	  // Set a fixed width.
+	  $('#tutorialList').width($('#tutorialList').width());
+  }
+  if(!isMobile) {
+	  $('.tutorialEntry').each(function(i) {
+		  $(this).addClass('tutorialEntryHover');
+	  });
+  }
+  document.getElementById('slide').onload = function() {
+    document.getElementById('slide').contentWindow.PDFJS.openExternalLinksInNewWindow = true;
+  };
+</script>
+  </body>
+</html>
